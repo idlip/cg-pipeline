@@ -9,29 +9,36 @@ MAGENTA=$(tput setaf 5)
 CYAN=$(tput setaf 6)
 WHITE=$(tput setaf 7)
 NC=$(tput sgr0) # no color / reset
-
+VERSION="0.1"
 
 ############## Tools and Config ###############
-ALIGNER="minimap2" # bwa or minimap2
+# aligner: bwa or minimap2
+ALIGNER_TOOL="minimap2"
+# taxonomy: metaphlan or kraken2
+TAXA_TOOL="metaphlan"
 PAIRED="true"
 THREADS="16"
 
-############ Input directory ##################
-RAWDATA="rawdata" # folder where raw fastq files are
-REF_GENOME="hg38.fa" # make sure to unzip it
+############ Input directory path ##################
+RAWDATA_DIR="rawdata" # folder/dir where raw input fastq files are
+REF_GENOME_FILE="hg38.fa" # make sure to unzip it
 
+# Download or build kraken2 database
+KRAKEN2_DB_PATH="mainDB"
+
+export KRAKEN2_NUM_THREADS=$THREADS
 # Specify the directory variables for output results
 ################## EDIT SET FILE PATHS ########################
-alignout="aligned_output"
-qc_report="reports"
-meta_profile="profiled"
-amr_output="amr_screening"
-log_output="run_logs"
+ALIGNED_OUT_DIR="aligned_output"
+QC_REPORT_DIR="reports"
+TAXONOMIC_PROFILE_DIR="profiled"
+ABRICATE_OUT_DIR="amr_screening"
+LOG_OUTPUT_DIR="run_logs"
 ##############################################################
 
 
 # List of tools to check
-TOOLS=("fastqc" "fastp" "samtools" $ALIGNER)
+TOOLS=("fastqc" "fastp" "samtools" "${ALIGNER_TOOL}" "spades.py" "abricate" "quast.py" "metaphlan")
 
 function check_tools() {
     local missing_tools=()
