@@ -62,12 +62,42 @@ function check_tools() {
 function print_header() {
     local message="$1"
     local length=${#message}
-    local border=$(printf '%*s' $((length + 20)) | tr ' ' '=')
+    local border
+    border=$(printf "%$((length + 20))s" | tr ' ' '=')
 
     echo "$border"
     echo -e "${YELLOW}-->>${NC} ${GREEN} $message ${NC} "
     echo "$border"
 }
+
+# display help message
+show_help() {
+    echo "Usage: $0 [-h] [-i RAWDATA_DIR] [-v]"
+    echo "  -h              Display this help message."
+    echo "  -i DIRECTORY    Input rawdata fastq directory."
+    echo "  -v              Show the version."
+}
+
+# Parse command-line options
+while getopts "hi:v" option; do
+    case $option in
+        h)  # Display help message
+            show_help
+            exit 0
+            ;;
+        i)  # Specify the input directory
+            RAWDATA_DIR="$OPTARG"
+            ;;
+        v)
+            echo "$0 v$VERSION"
+            exit 1
+            ;;
+        *)
+            show_help
+            exit 1
+            ;;
+    esac
+done
 
 
 # Function to check for errors and stop execution if any command fails
