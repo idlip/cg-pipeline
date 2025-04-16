@@ -113,7 +113,7 @@ function check_error() {
 function get_rawdata() {
     local directory="$1"
     local -A basenames_map
-    local file basename
+    local file rawfile
 
     if [ ! -d "$directory" ]; then
         echo "Error: '$directory' is not a valid directory with rawdata files. Correct the path"
@@ -147,9 +147,9 @@ function quality_check() {
 
 
     if [ "$PAIRED" == "true" ]; then
-        fastp -i ${srr_id}_1.fastq.gz -I ${srr_id}_2.fastq.gz -o ${output}_trim_1.fastq.gz -O ${output}_trim_2.fastq.gz -w $THREADS
+        fastp -i "${srr_id}"_1.fastq.gz -I "${srr_id}"_2.fastq.gz -o "${output}"_trim_1.fastq.gz -O "${output}"_trim_2.fastq.gz -w $THREADS
     else
-        fastp -i ${srr_id}.fastq.gz -o ${output}_trim.fastq.gz -w $THREADS
+        fastp -i "${srr_id}".fastq.gz -o "${output}"_trim.fastq.gz -w $THREADS
     fi
     check_error
     print_header "Quality check and Trimming finished for ${srr_id} ID."
@@ -160,17 +160,17 @@ function fastqc_report() {
     local srr_id=$1
 
     if [ "$PAIRED" == "true" ]; then
-        fastqc ${srr_id}_1.fastq.gz ${srr_id}_2.fastq.gz -o ${qc_report} -t $THREADS
+        fastqc "${srr_id}"_1.fastq.gz "${srr_id}"_2.fastq.gz -o ${QC_REPORT_DIR} -t $THREADS
     else
-        fastqc ${srr_id}.fastq.gz -o ${qc_report} -t $THREADS
+        fastqc "${srr_id}".fastq.gz -o ${QC_REPORT_DIR} -t $THREADS
     fi
     check_error
     print_header "Fastqc quality reports generated for ${srr_id} ID."
 }
 
 function index_ref() {
-    local ref=${REF_GENOME}
-    if [ "$ALIGNER" == "minimap2" ]; then
+    local ref=${REF_GENOME_FILE}
+    if [ "$ALIGNER_TOOL" == "minimap2" ]; then
         minimap2 -d ${ref%.fa}.mmi ${ref}
     else
         echo "Choose only minimap2"
@@ -182,12 +182,12 @@ function index_ref() {
 function align_reads() {
     # I guess no need for this, when spades is doing denovo assembly?
     local srr_id=$1
-    local ref=${REF_GENOME}
+    local ref=${REF_GENOME_FILE}
 
     if [ "$PAIRED" == "true" ]; then
-        minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi ${srr_id}_trim_1.fastq.gz ${srr_id}_trim_2.fastq.gz > ${alignout}/${srr_id}.sam
+        minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi "${srr_id}"_trim_1.fastq.gz "${srr_id}"_trim_2.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
     else
-        minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi ${srr_id}_trim.fastq.gz > ${alignout}/${srr_id}.sam
+        minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi "${srr_id}"_trim.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
     fi
     check_error
     print_header "Aligned reads for ${srr_id} ID."
@@ -196,9 +196,9 @@ function align_reads() {
 function assemble_reads() {
     local srr_id=$1
     if [ "$PAIRED" == "true" ]; then
-        spades.py --meta -1 "${srr_id}_trim_1.fastq.gz" -2 "${srr_id}_trim_2.fastq.gz" -o "${alignout}" -t $THREADS -m 128 --only-assembler
+        spades.py --meta -1 "${srr_id}_trim_1.fastq.gz" -2 "${srr_id}_trim_2.fastq.gz" -o "${ALIGNED_OUT_DIR}" -t $THREADS -m 128 --only-assembler
     else
-        spades.py --meta "${srr_id}_trim.fastq.gz" -o "${alignout}" -t $THREADS -m 128 --only-assembler
+        spades.py --meta "${srr_id}_trim.fastq.gz" -o "${ALIGNED_OUT_DIR}" -t $THREADS -m 128 --only-assembler
     fi
     check_error
     print_header "Assembled reads for ${srr_id} ID."
@@ -206,7 +206,7 @@ function assemble_reads() {
 
 function quast_check() {
     local srr_id=$1
-    quast.py ${alignout}/contigs.fasta -o ${qc_reports}/quast --min-contig 100
+    quast.py ${ALIGNED_OUT_DIR}/contigs.fasta -o ${QC_REPORT_DIR}/quast --min-contig 100
     check_error
     print_header "Quast quality checked for ${srr_id} ID."
 }
