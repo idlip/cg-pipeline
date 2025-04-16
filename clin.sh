@@ -215,24 +215,36 @@ function metaphlan_profile() {
     local srr_id=$1
 
     if [ "$PAIRED" == "true" ]; then
-        metaphlan ${srr_id}_trim_1.fastq.gz,${srr_id}_trim_2.fastq.gz --nproc 32 --input_type fastq -o $meta_profile
+        metaphlan "${srr_id}"_trim_1.fastq.gz,"${srr_id}"_trim_2.fastq.gz --nproc 32 --input_type fastq -o $TAXONOMIC_PROFILE_DIR
     else
-        metaphlan ${srr_id}_trim.fastq.gz --nproc 32 --input_type fastq -o $meta_profile
+        metaphlan "${srr_id}"_trim.fastq.gz --nproc 32 --input_type fastq -o $TAXONOMIC_PROFILE_DIR
     fi
     check_error
-    print_header "Profiling of microbial communities for ${srr_id} ID."
+    print_header "Metaphlan Profiling of microbial communities for ${srr_id} ID."
+}
+
+function kraken_classify() {
+    local srr_id=$1
+    if [ "$PAIRED" == "true" ]; then
+        k2 classify --db $KRAKEN2_DB_PATH --threads $THREADS --output $TAXONOMIC_PROFILE_DIR --paired "${srr_id}"_trim_1.fastq.gz "${srr_id}"_trim_2.fastq.gz
+    else
+        k2 classify --db $KRAKEN2_DB_PATH --threads $THREADS --output $TAXONOMIC_PROFILE_DIR "${srr_id}"_trim.fastq.gz
+    fi
+
+    check_error
+    print_header "Kraken2 classification of microbial communities for ${srr_id} ID."
 }
 
 function abricate_summary() {
     local srr_id=$1
-    local input=$alignout/contigs.fasta
-    local output=$amr_output
+    local input=$ALIGNED_OUT_DIR/contigs.fasta
+    local output=$ABRICATE_OUT_DIR
 
-    abricate --threads $THREADS --mincov 60 --db ncbi "$input" > "$output/amr.txt" 2> "$log_output/amr.log"
+    abricate --threads $THREADS --mincov 60 --db ncbi "$input" > "$output/amr.txt" 2> "$LOG_OUTPUT_DIR/amr.log"
 
-    abricate --threads $THREADS --mincov 60 --db plasmidfinder "$input" > "$output/pf.txt" 2> "$log_output/pf.log"
+    abricate --threads $THREADS --mincov 60 --db plasmidfinder "$input" > "$output/pf.txt" 2> "$LOG_OUTPUT_DIR/pf.log"
 
-    abricate --threads $THREADS --mincov 60 --db vfdb "$input" > "$output/vf.txt" 2> "$log_output/vf.log"
+    abricate --threads $THREADS --mincov 60 --db vfdb "$input" > "$output/vf.txt" 2> "$LOG_OUTPUT_DIR/vf.log"
 
     abricate --summary "$output/amr.txt" > "$output/amr.summary"
 
