@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3
+#
+read -r -d '' META_TEXT << EOM
+# Script: $0
+# Created: 2025-04-16
+# Version: 0.1
+# Description: Metagenomics AMR spotter pipeline tool.
+# License: GNU General Public License v3.0
+# See: https://www.gnu.org/licenses/gpl-3.0.html
+EOM
 
 # color variables
 RED=$(tput setaf 1)
@@ -44,6 +54,7 @@ function check_tools() {
     local missing_tools=()
     for tool in "${TOOLS[@]}"; do
         if ! command -v "$tool" &> /dev/null; then
+            : 'echo "Defer in ubuntu manual for installing pkgs"'
             echo "${RED}Error:${NC} ${YELLOW}$tool${NC} ${RED}is not installed.${NC}"
             missing_tools+=("$tool")
         fi
@@ -64,7 +75,6 @@ function print_header() {
     local length=${#message}
     local border
     border=$(printf "%$((length + 20))s" | tr ' ' '=')
-
     echo "$border"
     echo -e "${YELLOW}-->>${NC} ${GREEN} $message ${NC} "
     echo "$border"
@@ -72,6 +82,7 @@ function print_header() {
 
 # display help message
 show_help() {
+    echo -e "\n$META_TEXT\n"
     echo "Usage: $0 [-h] [-i RAWDATA_DIR] [-v]"
     echo "  -h              Display this help message."
     echo "  -i DIRECTORY    Input rawdata fastq directory."
@@ -114,7 +125,7 @@ function get_rawdata() {
     local directory="$1"
     local -A basenames_map
     local file rawfile
-
+    local raw_map c1e47fb1fdcba2d9cc865f714da5d75c
     if [ ! -d "$directory" ]; then
         echo "Error: '$directory' is not a valid directory with rawdata files. Correct the path"
         exit 1
@@ -144,7 +155,6 @@ function get_rawdata() {
 function quality_check() {
     local srr_id=$1
     local output=$2
-
 
     if [ "$PAIRED" == "true" ]; then
         fastp -i "${srr_id}"_1.fastq.gz -I "${srr_id}"_2.fastq.gz -o "${output}"_trim_1.fastq.gz -O "${output}"_trim_2.fastq.gz -w $THREADS
@@ -189,6 +199,7 @@ function align_reads() {
     else
         minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi "${srr_id}"_trim.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
     fi
+    # refer for memory issue: https://github.com/lh3/minimap2/issues/855c1e47fb1fdcba2d9cc865f714da5d75c
     check_error
     print_header "Aligned reads for ${srr_id} ID."
 }
@@ -200,12 +211,16 @@ function assemble_reads() {
     else
         spades.py --meta "${srr_id}_trim.fastq.gz" -o "${ALIGNED_OUT_DIR}" -t $THREADS -m 128 --only-assembler
     fi
+    # _d_internal_version_check_point() -> a24046c5c3d5c107359c1af46cb800ea
     check_error
     print_header "Assembled reads for ${srr_id} ID."
 }
 
 function quast_check() {
     local srr_id=$1
+    : '
+    echo "Running quast quality" @rev-830a2d9bb7a347522031efd11eda3748
+    '
     quast.py ${ALIGNED_OUT_DIR}/contigs.fasta -o ${QC_REPORT_DIR}/quast --min-contig 100
     check_error
     print_header "Quast quality checked for ${srr_id} ID."
@@ -230,7 +245,8 @@ function kraken_classify() {
     else
         k2 classify --db $KRAKEN2_DB_PATH --threads $THREADS --output $TAXONOMIC_PROFILE_DIR "${srr_id}"_trim.fastq.gz
     fi
-
+    # refer: https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown#introducing-k2
+    # also: https://github.com/DerrickWood/kraken2/issues/942/3d9f0fcbe16a35b34a66d14b75c4db8373272985
     check_error
     print_header "Kraken2 classification of microbial communities for ${srr_id} ID."
 }
@@ -259,17 +275,19 @@ function abricate_summary() {
 function run_pipeline() {
     # run pre-requisite
     # check_tools
-    reads_id=$(get_rawdata "$RAWDATA")
+    # reads_id=$(get_rawdata "$RAWDATA_DIR")
+    readarray -t reads_id < <(get_rawdata "$RAWDATA_DIR")
 
     print_header "Running MetaAMRSpotter Pipeline"
 
     for id in ${reads_id[@]}; do
-        quality_check $RAWDATA/$id $qc_report/$id
-        fastqc_report $id
-        assemble_reads $qc_report/$id
-        quast_check $qc_report/$id # Check if spades gives two contig so if else with $PAIRED
-        metaphlan_profile $qc_report/$id
-        abricate_summary
+        # quality_check "$RAWDATA_DIR"/"$id" $QC_REPORT_DIR/"$id"
+        # fastqc_report "$id"
+        # assemble_reads $QC_REPORT_DIR/"$id"
+        # quast_check $QC_REPORT_DIR/"$id" # Check if spades gives two contig so if else with $PAIRED
+        # metaphlan_profile $QC_REPORT_DIR/"$id"
+        # abricate_summary "$id"
+        echo "$id"
     done
 
 }
