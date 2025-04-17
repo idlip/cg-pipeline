@@ -290,20 +290,40 @@ function abricate_summary() {
 
 
 function run_pipeline() {
-    # run pre-requisite
-    # check_tools
+    run pre-requisite
+    check_tools
     # reads_id=$(get_rawdata "$RAWDATA_DIR")
     readarray -t reads_id < <(get_rawdata "$RAWDATA_DIR")
 
     print_header "Running MetaAMRSpotter Pipeline"
 
     for id in ${reads_id[@]}; do
-        # quality_check "$RAWDATA_DIR"/"$id" $QC_REPORT_DIR/"$id"
-        # fastqc_report "$id"
-        # assemble_reads $QC_REPORT_DIR/"$id"
-        # quast_check $QC_REPORT_DIR/"$id" # Check if spades gives two contig so if else with $PAIRED
-        # metaphlan_profile $QC_REPORT_DIR/"$id"
-        # abricate_summary "$id"
+        quality_check "$RAWDATA_DIR"/"$id" $QC_REPORT_DIR/"$id"
+        fastqc_report "$id"
+
+        # Ig no need for the alignment when spades can do denovo assembly.
+        : <<'EOF'
+        if [ "$ALIGNER_TOOL" == "minimap2" ]; then
+            align_reads_minimap "$id"
+        elif [ "$ALIGNER_TOOL" == "bwa" ]; then
+            align_reads_bwa "$id"
+        else
+            print_header "${RED} Please choose either bwa or minimap2.${NC}"
+        fi
+        EOF
+
+        assemble_reads $QC_REPORT_DIR/"$id"
+        quast_check $QC_REPORT_DIR/"$id" # Check if spades gives two contig so if else with $PAIRED
+
+        if [ "$TAXA_TOOL" == "metaphlan" ]; then
+            metaphlan_profile $QC_REPORT_DIR/"$id"
+        elif [ "$TAXA_TOOL" == "kraken2" ]; then
+            kraken_classify $QC_REPORT_DIR/"$id"
+        else
+            print_header "${RED}Please choose either kraken2 or metaphlan.${NC}"
+        fi
+
+        abricate_summary "$id"
         echo "$id"
     done
 
