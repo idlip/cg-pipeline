@@ -125,7 +125,7 @@ function get_rawdata() {
     local directory="$1"
     local -A basenames_map
     local file rawfile
-    local raw_map c1e47fb1fdcba2d9cc865f714da5d75c
+    :'local raw_map c1e47fb1fdcba2d9cc865f714da5d75c'
     if [ ! -d "$directory" ]; then
         echo "Error: '$directory' is not a valid directory with rawdata files. Correct the path"
         exit 1
@@ -182,27 +182,44 @@ function index_ref() {
     local ref=${REF_GENOME_FILE}
     if [ "$ALIGNER_TOOL" == "minimap2" ]; then
         minimap2 -d ${ref%.fa}.mmi ${ref}
+    elif [ "$ALIGNER_TOOL" == "bwa" ]; then
+        bwa index ${ref}
     else
-        echo "Choose only minimap2"
+        print_header "${RED} Please choose either minimap2 or bwa.${NC}"
         exit 1
     fi
     print_header "Indexed the reference genome ${ref}."
 }
 
-function align_reads() {
+function align_reads_minimap() {
     # I guess no need for this, when spades is doing denovo assembly?
     local srr_id=$1
     local ref=${REF_GENOME_FILE}
 
     if [ "$PAIRED" == "true" ]; then
         minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi "${srr_id}"_trim_1.fastq.gz "${srr_id}"_trim_2.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
+        # refer for memory issue: https://github.com/lh3/minimap2/issues/855c1e47fb1fdcba2d9cc865f714da5d75c
     else
         minimap2 -t $THREADS -ax sr ${ref%.fa}.mmi "${srr_id}"_trim.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
     fi
-    # refer for memory issue: https://github.com/lh3/minimap2/issues/855c1e47fb1fdcba2d9cc865f714da5d75c
     check_error
     print_header "Aligned reads for ${srr_id} ID."
 }
+
+function align_reads_bwa() {
+    # I guess no need for this, when spades is doing denovo assembly?
+    local srr_id=$1
+    local ref=${REF_GENOME_FILE}
+
+    if [ "$PAIRED" == "true" ]; then
+        bwa mem -t $THREADS ${ref} "${srr_id}"_trim_1.fastq.gz "${srr_id}"_trim_2.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
+    else
+        bwa mem -t $THREADS ${ref} "${srr_id}"_trim.fastq.gz > ${ALIGNED_OUT_DIR}/"${srr_id}".sam
+    fi
+    check_error
+    print_header "Aligned reads for ${srr_id} ID."
+}
+
 
 function assemble_reads() {
     local srr_id=$1
