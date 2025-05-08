@@ -1,0 +1,84 @@
+#+PROPERTY: header-args:python :session sysbio :python "uv run python3"
+
+* Simulate base model
+- And test plots
+
+** Import module and model
+#+begin_src python
+  import basico as cp
+
+  inp_model = cp.load_model("model/ford20.xml")
+#+end_src
+
+#+RESULTS:
+: None
+
+** Get data
+#+begin_src python
+  cp.get_species()
+#+end_src
+
+** Time course simulation
+#+begin_src python :results graphics file output :file "plots/test.png"
+  tc = cp.run_time_course(100, 10)
+  # tc.plot()
+  # cp.plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:plots/test.png]]
+
+#+begin_src python :results graphics file output :file "plots/remake.png"
+  import matplotlib.pyplot as plt
+  plt.figure(figsize=(10, 10))
+
+  filter_cols = ['M_3,5 [gut]', 'M_3,2^* [gut tracer]', 'M_3,4^* [gut tracer]', 'Vitamin A']
+                 # 'M_3,6^* [gut tracer]', 'M_8,2 [irreversible extravascular]',
+                 # 'M_8,4 [irreversible extravascular]',
+                 # 'M_8,2^* [irreversible extravascular tracer]']
+
+  tc_filter = tc[filter_cols]
+
+  # cp.plt.scatter(tc)
+  for column in tc_filter.columns:
+      cp.plt.plot(tc_filter.index, tc_filter[column], label=column)
+
+  plt.legend(loc='upper left', bbox_to_anchor=(1, 1), frameon=True, borderpad=1, title="Legend")
+  plt.xlabel('X-axis')
+  plt.ylabel('Y-axis')
+  plt.title('Line Plot with Legends at the Bottom')
+  plt.tight_layout()
+  plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:plots/remake.png]]
+
+** add ingredients/species
+#+begin_src python
+  # furr_model = cp.load_model("model/furr05.xml")
+
+  # furr_tc = cp.run_time_course()
+
+  import pandas as pd
+  import matplotlib.pyplot as plt
+
+  # Read the CSV file and select columns by index
+  meal_replace = pd.read_csv('data/meal-replace-mols.csv', usecols=[0, 4], dtype={'Molar Concentration (M)': float})
+  pd.set_option('display.float_format', '{:.6f}'.format)
+  meal_replace = meal_replace.dropna()
+
+  # Display the dataframe
+  print(meal_replace)
+
+  for index, row in meal_replace.iterrows():
+      # text = f"hello world {row['col1']}, {row['col2']}"
+      cp.add_species(row['Nutrient'], initial_concentration=row['Molar Concentration (M)'])
+      # print(text)
+
+  tc = cp.run_time_course(100, 100)
+  tc.plot()
+
+#+end_src
+
+#+RESULTS:

@@ -1,0 +1,69 @@
+
+#+PROPERTY: header-args:python :session uvpy :python "/home/vn/miniconda3/envs/py3.12/bin/uv run python3" :results output
+
+* Models & info
+
+| Model                   | Desc                                              | Info |
+|-------------------------+---------------------------------------------------+------|
+| R-HSA-196807.sbml       | Reactome Nicotinate metabolism                    |      |
+| R-HSA-196843.sbml       | Vit B2 Riboflavin                                 |      |
+| R-HSA-5362517.sbml      | Vit A - Retinoic acid                             |      |
+| ford20.xml              | Whole body Vit A metabolism                       |      |
+| furr05.xml              | Whole body vit A meta                             |      |
+| green24.xml             | Whole body vit A meta                             |      |
+| MODEL1402200001_url.xml | Mardinoglu2013 - iAdipocytes1809                  |      |
+| BIOMD0000000434_url.xml | McAuley2012 - Cholesterol metabolism              |      |
+| DiCamillo2016.xml       | DiCamillo2016 - Insulin signalling pathway        |      |
+| weight-change.xml       | Chow Hall - Dynamics of Human Weight Change       |      |
+| BIOMD0000000232_url.xml | TCA ATP production                                |      |
+| BIOMD0000000436_url.xml | Eicosanoid Metabolism - lipidomics flux analysis. |      |
+| BIOMD0000000247_url.xml | Carbohydrate_Rerouting                            |      |
+| BIOMD0000000341_url.xml | beta-cell mass, insulin, and glucose kinetics     |      |
+|-------------------------+---------------------------------------------------+------|
+
+* Plan is to base on exisiting model
+
+and try for predictions
+
+or can we do from scratch? (short answer: NO!, long answer: No need!)
+
+#+begin_src python :results graphics file output :file boxplot.png
+  import basico as cp
+  import matplotlib.pyplot as plt
+
+  biomod = cp.load_biomodel(10)
+
+  tc = cp.run_time_course(duration = 100)
+  tc.plot()
+#+end_src
+
+#+RESULTS:
+[[file:boxplot.png]]
+
+#+begin_src python :results output
+  print(tc)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+          Mek1-P     Erk2-P        Mos        Mek1        Erk2    Mek1-PP      Mos-P    Erk2-PP
+Time
+0.0    10.000000  10.000000  90.000000  280.000000  280.000000  10.000000  10.000000  10.000000
+1.0    10.140191  10.134137  89.073604  280.052966  279.965840   9.806843  10.926396   9.900023
+2.0    10.286141  10.262201  88.147849  280.086503  279.937658   9.627357  11.852151   9.800141
+3.0    10.437788  10.384524  87.222241  280.100691  279.915045   9.461521  12.777759   9.700430
+4.0    10.595087  10.501424  86.296355  280.095599  279.897599   9.309314  13.703645   9.600977
+...          ...        ...        ...         ...         ...        ...        ...        ...
+96.0   44.094272  25.474195  15.130340  203.303033  255.574278  52.602694  84.869660  18.951526
+97.0   44.509779  25.855494  14.880521  201.884918  254.635979  53.605302  85.119479  19.508527
+98.0   44.922790  26.241578  14.643225  200.463416  253.675926  54.613794  85.356775  20.082496
+99.0   45.333252  26.632330  14.418135  199.038807  252.693989  55.627941  85.581865  20.673681
+100.0  45.741114  27.027632  14.204932  197.611368  251.690044  56.647519  85.795068  21.282323
+
+[101 rows x 8 columns]
+#+end_example
+
+* Pre-pro biotics in gut health
+:PROPERTIES:
+:ID:       20250313T123904
+:END:

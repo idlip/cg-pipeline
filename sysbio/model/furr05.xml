@@ -1,0 +1,1431 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model areaUnits="dimensionless" extentUnits="umol" id="furr05" lengthUnits="dimensionless" metaid="meta_furr05" name="Furr et al, 2005" substanceUnits="umol" timeUnits="day" volumeUnits="dimensionless">
+    <notes>
+      <p xmlns="http://www.w3.org/1999/xhtml">"Stable isotope dilution techniques for assessing vitamin A status and bioefficacy of provitamin A carotenoids in humans" by Harold and his Furry friends (2005)</p>
+      <p xmlns="http://www.w3.org/1999/xhtml">The original model was coded in WinSAAM. There the delay compartment was modelled as a series of connected pseudo-compartments. We use the same approach here.</p>
+    </notes>
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#meta_furr05">
+          <dcterms:creator>
+            <rdf:Bag>
+              <rdf:li rdf:parseType="Resource">
+                <vCard4:hasName rdf:parseType="Resource">
+                  <vCard4:family-name>Smallbone</vCard4:family-name>
+                  <vCard4:given-name>Kieran</vCard4:given-name>
+                </vCard4:hasName>
+                <vCard4:hasEmail>kieran.smallbone@ncl.ac.uk</vCard4:hasEmail>
+              </rdf:li>
+            </rdf:Bag>
+          </dcterms:creator>
+	<dcterms:created rdf:parseType="Resource">
+	<dcterms:W3CDTF>2024-04-24T14:00:00Z</dcterms:W3CDTF>
+	</dcterms:created>
+	<dcterms:modified rdf:parseType="Resource">
+	<dcterms:W3CDTF>2024-12-02T10:57:16Z</dcterms:W3CDTF>
+	</dcterms:modified>
+	<bqmodel:isDescribedBy>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/doi/10.1079/PHN2004715"/>
+	</rdf:Bag>
+	</bqmodel:isDescribedBy>
+	<bqbiol:hasTaxon>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/taxonomy/9606"/>
+	</rdf:Bag>
+	</bqbiol:hasTaxon>
+	<bqbiol:hasProperty>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/mamo/MAMO_0000045"/>
+	</rdf:Bag>
+	</bqbiol:hasProperty>
+	<bqmodel:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/biomodels.db:MODEL2405200001"/>
+	</rdf:Bag>
+	</bqmodel:is>
+	</rdf:Description>
+      </rdf:RDF>
+    </annotation>
+      <listOfUnitDefinitions>
+      <unitDefinition id="day" name="day">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="86400" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="umol" name="umol">
+        <listOfUnits>
+          <unit exponent="1" kind="mole" multiplier="1" scale="-6"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="per_day" name="per day">
+        <listOfUnits>
+          <unit exponent="-1" kind="second" multiplier="86400" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="umol_per_day" name="umol per day">
+        <listOfUnits>
+          <unit exponent="1" kind="mole" multiplier="1" scale="-6"/>
+          <unit exponent="-1" kind="second" multiplier="86400" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="comp" sboTerm="SBO:0000290" size="1" spatialDimensions="3" units="dimensionless"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_1" initialConcentration="0.7512690355" metaid="meta_M_1" name="M_1 [mouth]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_1">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_2" initialConcentration="0.5416721566" metaid="meta_M_2" name="M_2 [gut]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_2">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_4" initialConcentration="3.731098421" metaid="meta_M_4" name="M_4 [liver]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_4">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_5" initialConcentration="3.17239151" metaid="meta_M_5" name="M_5 [blood]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_5">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_6" initialConcentration="231.4107506" metaid="meta_M_6" name="M_6 [liver]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_6">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_7" initialConcentration="14.83196031" metaid="meta_M_7" name="M_7 [other]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_7">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_1_0" initialAmount="1" metaid="meta_M_1_0" name="M_1^* [mouth tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_1_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_2_0" initialAmount="0" metaid="meta_M_2_0" name="M_2^* [gut tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_2_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_4_0" initialAmount="0" metaid="meta_M_4_0" name="M_4^* [liver tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_4_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_5_0" initialAmount="0" metaid="meta_M_5_0" name="M_5^* [blood tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_5_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_6_0" initialAmount="0" metaid="meta_M_6_0" name="M_6^* [liver tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_6_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_7_0" initialAmount="0" metaid="meta_M_7_0" name="M_7^* [other tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_7_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_1" initialConcentration="0.1411676634" metaid="meta_M_3_1" name="M_3,1 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_1">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_2" initialConcentration="0.1411676634" metaid="meta_M_3_2" name="M_3,2 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_2">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_3" initialConcentration="0.1411676634" metaid="meta_M_3_3" name="M_3,3 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_3">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_4" initialConcentration="0.1411676634" metaid="meta_M_3_4" name="M_3,4 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_4">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_5" initialConcentration="0.1411676634" metaid="meta_M_3_5" name="M_3,5 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_5">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_6" initialConcentration="0.1411676634" metaid="meta_M_3_6" name="M_3,6 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_6">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_7" initialConcentration="0.1411676634" metaid="meta_M_3_7" name="M_3,7 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_7">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_8" initialConcentration="5.335470742" metaid="meta_M_3_8" name="M_3,8 [delay]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_8">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_1_0" initialAmount="0" metaid="meta_M_3_1_0" name="M_3,1^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_1_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_2_0" initialAmount="0" metaid="meta_M_3_2_0" name="M_3,2^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_2_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_3_0" initialAmount="0" metaid="meta_M_3_3_0" name="M_3,3^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_3_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_4_0" initialAmount="0" metaid="meta_M_3_4_0" name="M_3,4^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_4_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_5_0" initialAmount="0" metaid="meta_M_3_5_0" name="M_3,5^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_5_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_6_0" initialAmount="0" metaid="meta_M_3_6_0" name="M_3,6^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_6_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_7_0" initialAmount="0" metaid="meta_M_3_7_0" name="M_3,7^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_7_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="comp" constant="false" hasOnlySubstanceUnits="false" id="M_3_8_0" initialAmount="0" metaid="meta_M_3_8_0" name="M_3,8^* [delay tracer]" sboTerm="SBO:0000285">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_M_3_8_0">
+	<bqbiol:hasPart>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/CHEBI:50211"/>
+	</rdf:Bag>
+	</bqbiol:hasPart>
+	</rdf:Description>
+	
+	
+          </rdf:RDF>
+        </annotation>
+            </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="U_1" units="umol_per_day" value="7.4"/>
+      <parameter constant="true" id="L_2_1" units="per_day" value="9.85"/>
+      <parameter constant="true" id="W_2" units="per_day" value="3.75"/>
+      <parameter constant="true" id="L_3_2" units="per_day" value="9.85"/>
+      <parameter constant="true" id="L_4_3" units="per_day" value="1"/>
+      <parameter constant="true" id="L_5_2" units="per_day" value="0.0614"/>
+      <parameter constant="true" id="L_5_4" units="per_day" value="1.43"/>
+      <parameter constant="true" id="L_6_5" units="per_day" value="4.26"/>
+      <parameter constant="true" id="L_5_6" units="per_day" value="0.0352"/>
+      <parameter constant="true" id="W_6" units="per_day" value="0.0232"/>
+      <parameter constant="true" id="L_7_5" units="per_day" value="4.32"/>
+      <parameter constant="true" id="L_5_7" units="per_day" value="0.924"/>
+      <parameter constant="true" id="t_1" units="day"/>
+      <parameter constant="true" id="t_2" units="day"/>
+      <parameter constant="true" id="t_3" units="day"/>
+      <parameter constant="true" id="t_4" units="day"/>
+      <parameter constant="true" id="t_5" units="day"/>
+      <parameter constant="true" id="t_6" units="day"/>
+      <parameter constant="true" id="t_7" units="day"/>
+      <parameter constant="false" id="T_1" units="day"/>
+      <parameter constant="false" id="T_2" units="day"/>
+      <parameter constant="false" id="T_3" units="day"/>
+      <parameter constant="false" id="T_4" units="day"/>
+      <parameter constant="false" id="T_5" units="day"/>
+      <parameter constant="false" id="T_6" units="day"/>
+      <parameter constant="false" id="T_7" units="day"/>
+      <parameter constant="false" id="T" units="day"/>
+      <parameter constant="true" id="tau_3" units="day" value="0.211666666666667"/>
+      <parameter constant="false" id="TBS" units="umol"/>
+      <parameter constant="false" id="Fa" units="umol"/>
+      <parameter constant="false" id="SAp" units="dimensionless"/>
+      <parameter constant="false" id="SAs" units="dimensionless"/>
+      <parameter constant="false" id="S" units="dimensionless"/>
+      <parameter constant="false" id="FaS" units="umol"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="t_1" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <ci> L_2_1 </ci>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_2" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <apply>
+              <plus/>
+              <ci> W_2 </ci>
+              <ci> L_3_2 </ci>
+              <ci> L_5_2 </ci>
+            </apply>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_3" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <ci> L_4_3 </ci>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_4" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <ci> L_5_4 </ci>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_5" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <apply>
+              <plus/>
+              <ci> L_6_5 </ci>
+              <ci> L_7_5 </ci>
+            </apply>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_6" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <apply>
+              <plus/>
+              <ci> L_5_6 </ci>
+              <ci> W_6 </ci>
+            </apply>
+          </apply>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="t_7" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <apply>
+            <divide/>
+            <cn type="integer" sbml:units="dimensionless"> 1 </cn>
+            <ci> L_5_7 </ci>
+          </apply>
+        </math>
+            </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="T_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_1 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_2 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> tau_3 </ci>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_4 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_5">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_5 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_6">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_6 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T_7">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_7 </ci>
+            <ci> U_1 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="T">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <ci> T_1 </ci>
+            <ci> T_2 </ci>
+            <ci> T_3 </ci>
+            <ci> T_4 </ci>
+            <ci> T_5 </ci>
+            <ci> T_6 </ci>
+            <ci> T_7 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="TBS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <ci> M_6 </ci>
+            <ci> M_7 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="Fa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <ci> M_6_0 </ci>
+            <ci> M_7_0 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="SAp">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <ci> M_5_0 </ci>
+            <ci> M_5 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="SAs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> M_6_0 </ci>
+              <ci> M_7_0 </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> M_6 </ci>
+              <ci> M_7 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="S" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">        
+          <piecewise>
+            <piece>
+              <apply>
+                <divide/>
+                <ci> SAp </ci>
+                <ci> SAs </ci>
+              </apply>
+              <apply>
+                <gt/>
+                <ci> SAs </ci>
+                <cn type="integer" sbml:units="dimensionless"> 0 </cn>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer" sbml:units="dimensionless"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="FaS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <ci> Fa </ci>
+            <ci> S </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="u_1" reversible="false" sboTerm="SBO:0000167">
+        <listOfProducts>
+          <speciesReference constant="true" species="M_1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <ci> U_1 </ci>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_2_1" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_2_1 </ci>
+              <ci> M_1 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="w_2" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> W_2 </ci>
+              <ci> M_2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_3_2" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_3_2 </ci>
+              <ci> M_2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_4_3" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_8"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_4"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_4_3 </ci>
+              <ci> M_3_8 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_2" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_2 </ci>
+              <ci> M_2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_4" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_4"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_4 </ci>
+              <ci> M_4 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_6_5" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_6"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_6_5 </ci>
+              <ci> M_5 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_6" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_6"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_6 </ci>
+              <ci> M_6 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="w_6" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_6"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> W_6 </ci>
+              <ci> M_6 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_7_5" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_7"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_7_5 </ci>
+              <ci> M_5 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_7" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_7"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_7 </ci>
+              <ci> M_7 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_2_1_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_1_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_2_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_2_1 </ci>
+              <ci> M_1_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="w_2_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2_0"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> W_2 </ci>
+              <ci> M_2_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_3_2_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_1_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_3_2 </ci>
+              <ci> M_2_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_4_3_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_8_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_4_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_4_3 </ci>
+              <ci> M_3_8_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_2_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_2_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_2 </ci>
+              <ci> M_2_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_4_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_4_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_4 </ci>
+              <ci> M_4_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_6_5_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_6_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_6_5 </ci>
+              <ci> M_5_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_6_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_6_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_6 </ci>
+              <ci> M_6_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="w_6_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_6_0"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> W_6 </ci>
+              <ci> M_6_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_7_5_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_7_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_7_5 </ci>
+              <ci> M_5_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="l_5_7_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_7_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_5_0"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> L_5_7 </ci>
+              <ci> M_7_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_1" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_2"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_1 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_2" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_3"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_3" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_3"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_4"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_3 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_4" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_4"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_5"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_4 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_5" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_5"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_6"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_5 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_6" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_6"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_7"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_6 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_7" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_7"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_8"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_7 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_1_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_1_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_2_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_1_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_2_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_2_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_3_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_2_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_3_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_3_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_4_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_3_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_4_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_4_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_5_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_4_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_5_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_5_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_6_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_5_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_6_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_6_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_7_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_6_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="D_3_7_0" reversible="false" sboTerm="SBO:0000167">
+        <listOfReactants>
+          <speciesReference constant="true" species="M_3_7_0"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="M_3_8_0"/>
+        </listOfProducts>
+        <kineticLaw xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version2/core">          
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <cn type="integer" sbml:units="dimensionless"> 8 </cn>
+                <ci> tau_3 </ci>
+              </apply>
+              <ci> M_3_7_0 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
