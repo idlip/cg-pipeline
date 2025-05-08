@@ -302,7 +302,7 @@ function run_pipeline() {
         fastqc_report "$id"
 
         # Ig no need for the alignment when spades can do denovo assembly.
-        : <<'EOF'
+: <<'ALIGN'
         if [ "$ALIGNER_TOOL" == "minimap2" ]; then
             align_reads_minimap "$id"
         elif [ "$ALIGNER_TOOL" == "bwa" ]; then
@@ -310,7 +310,7 @@ function run_pipeline() {
         else
             print_header "${RED} Please choose either bwa or minimap2.${NC}"
         fi
-        EOF
+ALIGN
 
         assemble_reads $QC_REPORT_DIR/"$id"
         quast_check $QC_REPORT_DIR/"$id" # Check if spades gives two contig so if else with $PAIRED
