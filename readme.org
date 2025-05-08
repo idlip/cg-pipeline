@@ -1,0 +1,5 @@
+#+title: Computational Genomics Pipelines
+
+This repo consists of developed pipeline tools for RVCE COE Computational Genomics lab during my Internship.
+
+
